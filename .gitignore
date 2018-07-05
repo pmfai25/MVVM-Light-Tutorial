@@ -1,0 +1,6 @@
+# Ignoriere alle Build Ordner
+bin/
+obj/
+.vs/
+*.user
+*.suo

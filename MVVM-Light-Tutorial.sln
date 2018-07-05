@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ui.Desktop", "Ui.Desktop\Ui.Desktop.csproj", "{5532D99F-B505-432E-9BF5-A5EB7B26BFEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{13050980-9B5E-479D-874C-4A70B485112A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{A9B8C102-A95D-4E04-B30F-BF4E6C709FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Ui", "Logic.Ui\Logic.Ui.csproj", "{267AD010-1C0E-47C0-A8F0-35549BCA68F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5532D99F-B505-432E-9BF5-A5EB7B26BFEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5532D99F-B505-432E-9BF5-A5EB7B26BFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5532D99F-B505-432E-9BF5-A5EB7B26BFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5532D99F-B505-432E-9BF5-A5EB7B26BFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267AD010-1C0E-47C0-A8F0-35549BCA68F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267AD010-1C0E-47C0-A8F0-35549BCA68F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267AD010-1C0E-47C0-A8F0-35549BCA68F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267AD010-1C0E-47C0-A8F0-35549BCA68F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5532D99F-B505-432E-9BF5-A5EB7B26BFEE} = {13050980-9B5E-479D-874C-4A70B485112A}
+		{267AD010-1C0E-47C0-A8F0-35549BCA68F6} = {A9B8C102-A95D-4E04-B30F-BF4E6C709FEF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CF6BE65-2A63-41B7-B337-0AD763043F18}
+	EndGlobalSection
+EndGlobal
