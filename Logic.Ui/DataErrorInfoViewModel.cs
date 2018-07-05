@@ -10,8 +10,7 @@ namespace Logic.Ui
   public class DataErrorInfoViewModel : ViewModelBase, IDataErrorInfo
   {
     #region Fields
-    private string firstname;
-    private string lastname;
+
     private Dictionary<string, string> Errors { get; } = new Dictionary<string, string>();
 
     #endregion
@@ -19,43 +18,15 @@ namespace Logic.Ui
     #region Properties and Commands
 
     /// <summary>
-    /// Represetn the first name of a user
+    /// Represents the first name of a user
     /// </summary>
-    public string Firstname
-    {
-      get
-      {
-        return firstname;
-      }
-      set
-      {
-        if(value == firstname)
-        {
-          return;
-        }
+    public string Firstname { get; set; }
 
-        firstname = value;
-        RaisePropertyChanged();
-      }
-    }
+    /// <summary>
+    /// Represents the last name of a user
+    /// </summary>
+    public string Lastname { get; set; }
 
-    public string Lastname
-    {
-      get
-      {
-        return lastname;
-      }
-      set
-      {
-        if (value == lastname)
-        {
-          return;
-        }
-
-        lastname = value;
-        RaisePropertyChanged();
-      }
-    }
 
     public bool HasErrors => Errors.Any();
     public bool IsOk => !HasErrors;
