@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,11 +21,13 @@ namespace Logic.Ui
     /// <summary>
     /// Represents the first name of a user
     /// </summary>
+    [Required(AllowEmptyStrings = false, ErrorMessage = "Firstname must be defined")]
     public string Firstname { get; set; }
 
     /// <summary>
     /// Represents the last name of a user
     /// </summary>
+    [Required(AllowEmptyStrings = false, ErrorMessage = "Lastname must be defined")]
     public string Lastname { get; set; }
 
 
