@@ -1,4 +1,9 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Threading;
+using Logic.Ui.BaseTypes;
+using Logic.Ui.Models;
+using System.Threading.Tasks;
 
 namespace Logic.Ui
 {
@@ -14,7 +19,7 @@ namespace Logic.Ui
   /// See http://www.galasoft.ch/mvvm
   /// </para>
   /// </summary>
-  public class MainViewModel : ViewModelBase
+  public class MainViewModel : BaseViewModel
   {
     /// <summary>
     /// Initializes a new instance of the MainViewModel class.
@@ -28,10 +33,38 @@ namespace Logic.Ui
       else
       {
         WindowTitle = "MVVM Light tutorial";
+
+        Task.Run(
+          () =>
+          {
+            Task.Delay(2000).ContinueWith(
+                t =>
+                {
+                  while(Progress < 100)
+                  {
+                    DispatcherHelper.RunAsync(() => Progress += 5);
+                    Task.Delay(500).Wait();
+                  }
+                }
+              );
+          }
+          );
       }
     }
 
-    public string WindowTitle { get; private set; }
+    /// <summary>
+    /// A person to edit.
+    /// </summary>
+    public PersonModel PersonModel { get; set; } = new PersonModel();
+
+    /// <summary>
+    /// Indicates the progress.
+    /// </summary>
     public int Progress { get; set; }
+
+    /// <summary>
+    /// Opens a new child window.
+    /// </summary>
+    public RelayCommand OpenChildCommand { get; private set; }
   }
 }
