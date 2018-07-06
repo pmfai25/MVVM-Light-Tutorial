@@ -3,14 +3,82 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ui.Desktop"
+        xmlns:Converters="clr-namespace:Logic.Ui.Converters;assembly=Logic.Ui"
         mc:Ignorable="d"
-        Title="{Binding WindowTitle}" Height="450" Width="800"
-        DataContext="{Binding Main, Source={StaticResource Locator}}">
-  <Grid>
-    <TextBox Text="{Binding Firstname,
-                    Mode=TwoWay,
-                    UpdateSourceTrigger=PropertyChanged,
-                    ValidatesOnDataErrors=True}" />
+        Title="{Binding WindowTitle}" Height="480" Width="800"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        WindowStartupLocation="CenterScreen">
+  <Window.Resources>
+    <Converters:AgeToBrushConverter x:Key="AgeToBrushConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <Style TargetType="GroupBox">
+      <Setter Property="Margin" Value="2" />
+    </Style>
+    <Style TargetType="TextBox">
+      <Setter Property="Margin" Value="4" />
+    </Style>
+  </Window.Resources>
+  <!--<Window.IsEnabled>
+    <Binding Path="BindableProperty" Source="{StaticResource MessageListener}" />
+  </Window.IsEnabled>-->
+  <Grid Margin="10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <GroupBox Grid.Column="0" Grid.Row="0" Header="Progress bar with binding">
+      <ProgressBar Value="{Binding Progress}" MinHeight="20" Margin="4" />
+    </GroupBox>
+  <GroupBox Grid.Column="0" Grid.Row="1" Header="Binding &amp; IDataErrorInfo">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <!-- Firstname -->
+      <Label Content="Firstname:" Grid.Column="0" Grid.Row="0" />
+      <TextBox
+            Text="{Binding PersonModel.Firstname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Grid.Column="1" Grid.Row="0" />
+      <!-- Lastname -->
+      <Label Content="Lastname:" Grid.Column="0" Grid.Row="1" />
+      <TextBox
+            Text="{Binding PersonModel.Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Grid.Column="1" Grid.Row="1" />
+      <!-- Age -->
+      <Label Content="Birthday:" Grid.Column="0" Grid.Row="2" />
+      <DatePicker Grid.Column="1" Grid.Row="2" Margin="4"
+                    SelectedDate="{Binding PersonModel.Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+      <!-- Age -->
+      <Label Content="Age:" Grid.Column="0" Grid.Row="3" />
+      <Label Content="{Binding PersonModel.Age}" Grid.Column="1" Grid.Row="3"
+               Background="{Binding PersonModel.Age, Converter={StaticResource AgeToBrushConverter}, Mode=OneWay}" />
+      <!-- OK-Button -->
+      <Button Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Right"
+                Margin="4"
+                Content="OK"
+                Width="80"
+                Height="30"
+                Command="{Binding PersonModel.OkCommand}" />
+    </Grid>
+  </GroupBox>
+    <GroupBox Grid.Column="0" Grid.Row="2" Margin="4" Header="Converters" >
+      <Button Content="ShowChild" />
+    </GroupBox>
   </Grid>
 </Window>
