@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="BaseTypes\BaseModel.cs" />
     <Compile Include="BaseTypes\BaseViewModel.cs" />
+    <Compile Include="ChildViewModel.cs" />
     <Compile Include="Converters\AgeToBrushConverter.cs" />
     <Compile Include="Converters\BoolInverseConverter.cs" />
     <Compile Include="DataErrorInfoViewModel.cs" />

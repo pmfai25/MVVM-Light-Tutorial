@@ -43,6 +43,7 @@ namespace Logic.Ui
       ////}
 
       SimpleIoc.Default.Register<MainViewModel>();
+      SimpleIoc.Default.Register<ChildViewModel>();
       SimpleIoc.Default.Register<DataErrorInfoViewModel>();
     }
 
@@ -50,6 +51,11 @@ namespace Logic.Ui
     /// Retrieves the view model for the main view
     /// </summary>
     public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+    /// <summary>
+    /// Retrieves the view model for the child view model
+    /// </summary>
+    public ChildViewModel Child => ServiceLocator.Current.GetInstance<ChildViewModel>();
 
     /// <summary>
     /// Retrieves the view model for the data error info test view
