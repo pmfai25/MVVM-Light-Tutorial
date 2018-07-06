@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DataErrorInfoSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +84,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChildWindow.xaml.cs">
+      <DependentUpon>ChildWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataErrorInfoSample.xaml.cs">
       <DependentUpon>DataErrorInfoSample.xaml</DependentUpon>
