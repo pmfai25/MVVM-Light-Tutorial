@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
 using Logic.Ui.BaseTypes;
+using Logic.Ui.Messages;
 using Logic.Ui.Models;
 using System.Threading.Tasks;
 
@@ -40,7 +41,7 @@ namespace Logic.Ui
             Task.Delay(2000).ContinueWith(
                 t =>
                 {
-                  while(Progress < 100)
+                  while (Progress < 100)
                   {
                     DispatcherHelper.RunAsync(() => Progress += 5);
                     Task.Delay(500).Wait();
@@ -49,6 +50,8 @@ namespace Logic.Ui
               );
           }
           );
+
+        OpenChildCommand = new RelayCommand(() => MessengerInstance.Send(new OpenChildWindowMessage("Hello Child!")));
       }
     }
 

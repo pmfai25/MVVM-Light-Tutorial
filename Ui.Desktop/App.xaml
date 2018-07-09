@@ -7,11 +7,13 @@
              d1p1:Ignorable="d"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:UiLogic="clr-namespace:Logic.Ui;assembly=Logic.Ui"
-                 xmlns:Converters="clr-namespace:Logic.Ui.Converters;assembly=Logic.Ui">
+             xmlns:Converters="clr-namespace:Logic.Ui.Converters;assembly=Logic.Ui"
+             xmlns:Desktop="clr-namespace:Ui.Desktop">
   <Application.Resources>
     <ResourceDictionary>
       <UiLogic:ViewModelLocator x:Key="Locator"
                            d:IsDataSource="True" />
+      <Desktop:MessageListener x:Key="MessageListener" />
       <Converters:AgeToBrushConverter x:Key="AgeToBrushConverter" />
     </ResourceDictionary>
   </Application.Resources>

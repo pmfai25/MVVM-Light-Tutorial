@@ -6,10 +6,9 @@
     x:Class="Ui.Desktop.MainWindow"
     mc:Ignorable="d"
     Title="{Binding WindowTitle, Mode=OneWay}" Height="434.583" Width="742">
-  <Window.Resources>
-
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-  </Window.Resources>
+  <Window.IsEnabled>
+    <Binding Path="BindableProperty" Source="{StaticResource MessageListener}" />
+  </Window.IsEnabled>
   <!--<Window.IsEnabled>
     <Binding Path="BindableProperty" Source="{StaticResource MessageListener}"/>
   </Window.IsEnabled>-->
@@ -118,9 +117,8 @@
       </Grid>
     </GroupBox>
     <GroupBox Grid.Column="0" Grid.Row="2" Header="Converters">
-      <Button Visibility="{Binding ValidationOk, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Content="ShowChild" 
-                    Command="{Binding OpenChildCommand, Mode=OneWay}" />
+      <Button Content="ShowChild" 
+              Command="{Binding OpenChildCommand, Mode=OneWay}" />
     </GroupBox>
   </Grid>
 </Window>
