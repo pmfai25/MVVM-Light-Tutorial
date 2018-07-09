@@ -6,12 +6,14 @@
     x:Class="Ui.Desktop.MainWindow"
     mc:Ignorable="d"
     Title="{Binding WindowTitle, Mode=OneWay}" Height="434.583" Width="742">
+  
+  <!--Without the binding to at least one element of a static ressource 
+  the static ressource isn't instanciated by WPF. Because of this we're 
+  binding Window.IsEnabled to the dummy property "BindableProperty".-->
   <Window.IsEnabled>
     <Binding Path="BindableProperty" Source="{StaticResource MessageListener}" />
   </Window.IsEnabled>
-  <!--<Window.IsEnabled>
-    <Binding Path="BindableProperty" Source="{StaticResource MessageListener}"/>
-  </Window.IsEnabled>-->
+  
   <Window.DataContext>
     <Binding Path="Main" Source="{StaticResource Locator}" />
   </Window.DataContext>
