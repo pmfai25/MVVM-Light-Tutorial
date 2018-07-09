@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ui.Desktop"
         mc:Ignorable="d"
-        Title="ChildWindow" Height="300" Width="300">
-    <Window.DataContext>
-        <Binding Path="Child" Source="{StaticResource Locator}" />
-    </Window.DataContext>
-    <Grid>
-        <TextBlock Text="{Binding MessageFromParent}" />
-    </Grid>
+        Title="{Binding WindowTitle, Mode=OneWay}" Height="300" Width="300">
+  <Window.DataContext>
+    <Binding Path="Child" Source="{StaticResource Locator}" />
+  </Window.DataContext>
+  <Grid>
+    <TextBlock Text="{Binding MessageFromParent}" />
+  </Grid>
 </Window>
