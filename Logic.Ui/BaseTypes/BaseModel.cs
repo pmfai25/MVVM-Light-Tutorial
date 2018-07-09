@@ -109,6 +109,7 @@ namespace Logic.Ui.BaseTypes
                     var currentValue = prop.GetValue(this);
                     var requiredAttr = prop.GetCustomAttribute<RequiredAttribute>();
                     var maxLenAttr = prop.GetCustomAttribute<MaxLengthAttribute>();
+                    var minLenAttr = prop.GetCustomAttribute<MinLengthAttribute>();
                     if (requiredAttr != null)
                     {
                         if (string.IsNullOrEmpty(currentValue?.ToString() ?? string.Empty))
@@ -116,6 +117,7 @@ namespace Logic.Ui.BaseTypes
                             Errors.Add(prop.Name, requiredAttr.ErrorMessage);
                         }
                     }
+
                     if (maxLenAttr != null)
                     {
                         if ((currentValue?.ToString() ?? string.Empty).Length > maxLenAttr.Length)
@@ -123,11 +125,21 @@ namespace Logic.Ui.BaseTypes
                             Errors.Add(prop.Name, maxLenAttr.ErrorMessage);
                         }
                     }
-                    // further attributes
+
+                  if (minLenAttr != null)
+                  {
+                    if ((currentValue?.ToString() ?? string.Empty).Length < minLenAttr.Length)
+                    {
+                      Errors.Add(prop.Name, minLenAttr.ErrorMessage);
+                    }
+                  }
+                  // further attributes
                 });
+
             // we have to this because the Dictionary does not implement INotifyPropertyChanged            
             OnPropertyChanged(nameof(HasErrors));
             OnPropertyChanged(nameof(IsOk));
+
             // commands do not recognize property changes automatically
             OnErrorsCollected();
         }

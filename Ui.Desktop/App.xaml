@@ -15,6 +15,15 @@
                            d:IsDataSource="True" />
       <Desktop:MessageListener x:Key="MessageListener" />
       <Converters:AgeToBrushConverter x:Key="AgeToBrushConverter" />
+      
+      <!-- Brushes and colors -->
+      <SolidColorBrush x:Key="HintBrush" Color="#FF429E42" />
+
+      <!-- Defines a TextBlcok class for hints-->
+      <Style TargetType="TextBlock" x:Key="Hint">
+        <Setter Property="Foreground" Value="{StaticResource HintBrush}" />
+        <Setter Property="FontSize" Value="10" />
+      </Style>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

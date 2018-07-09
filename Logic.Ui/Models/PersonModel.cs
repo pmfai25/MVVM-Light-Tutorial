@@ -57,13 +57,14 @@ namespace Logic.Ui.Models
         /// The firstname of the person.
         /// </summary>
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name must not be empty.")]
-        [MaxLength(20, ErrorMessage = "Maximum of 50 characters is allowed.")]
+        [MaxLength(10, ErrorMessage = "Maximum of 10 characters is allowed.")]
         public string Firstname { get; set; }
 
         /// <summary>
         /// The lastname of the person.
         /// </summary>
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Last name must not be empty.")]
+        [MinLength(5, ErrorMessage = "Minimum of 5 characters is needed.")]
+        [MaxLength(20, ErrorMessage = "Maximum of 20 characters is allowed.")]
         public string Lastname { get; set; }
 
         /// <summary>
