@@ -87,20 +87,32 @@ namespace Logic.Ui
         Persons.CollectionChanged += (s, e) =>
         {
           // Hook an event handler for PropertyChanged to all new added items in Persons
-          foreach (INotifyPropertyChanged added in e.NewItems)
+          if (e.NewItems != null)
           {
-            added.PropertyChanged += PersonsOnPropertyChanged;
+            foreach (INotifyPropertyChanged added in e.NewItems)
+            {
+              added.PropertyChanged += PersonsOnPropertyChanged;
+            }
           }
 
           // Un-hook the event handler for PropertyChanged to all removed items in Persons
-          foreach (INotifyPropertyChanged removed in e.OldItems)
+          if (e.OldItems != null)
           {
-            removed.PropertyChanged -= PersonsOnPropertyChanged;
+            foreach (INotifyPropertyChanged removed in e.OldItems)
+            {
+              removed.PropertyChanged -= PersonsOnPropertyChanged;
+            }
           }
         };
 
         OpenChildCommand = new RelayCommand(() => MessengerInstance.Send(new OpenChildWindowMessage("Hello Child!")));
-        AddPersonCommand = new RelayCommand(() => Persons.Add(new PersonModel()));
+        AddPersonCommand = new RelayCommand(
+          () =>
+          {
+            var newPerson = new PersonModel();
+            Persons.Add(newPerson);
+            PersonModel = newPerson;
+          });
       }
     }
 
