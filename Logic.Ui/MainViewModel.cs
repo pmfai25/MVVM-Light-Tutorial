@@ -4,6 +4,8 @@ using GalaSoft.MvvmLight.Threading;
 using Logic.Ui.BaseTypes;
 using Logic.Ui.Messages;
 using Logic.Ui.Models;
+using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace Logic.Ui
@@ -51,7 +53,21 @@ namespace Logic.Ui
           }
           );
 
+        PersonModel = new PersonModel();
+        var personList = new ObservableCollection<PersonModel>();
+        for (var i = 0; i < 10; i++)
+        {
+          personList.Add(new PersonModel
+          {
+            Firstname = Guid.NewGuid().ToString("N").Substring(0, 10),
+            Lastname = Guid.NewGuid().ToString("N").Substring(0, 10)
+          });
+        }
+
+        Persons = personList;
+
         OpenChildCommand = new RelayCommand(() => MessengerInstance.Send(new OpenChildWindowMessage("Hello Child!")));
+        AddPersonCommand = new RelayCommand(() => Persons.Add(new PersonModel()));
       }
     }
 
@@ -69,5 +85,12 @@ namespace Logic.Ui
     /// Opens a new child window.
     /// </summary>
     public RelayCommand OpenChildCommand { get; private set; }
+
+    /// <summary>
+    /// Creates a new person
+    /// </summary>
+    public RelayCommand AddPersonCommand { get; private set; }
+
+    public ObservableCollection<PersonModel> Persons { get; set; }
   }
 }

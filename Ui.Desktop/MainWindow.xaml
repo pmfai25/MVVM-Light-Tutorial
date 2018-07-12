@@ -22,6 +22,7 @@
     <Menu DockPanel.Dock="Top">
       <MenuItem Header="Tools">
         <MenuItem Command="{Binding OpenChildCommand}" Header="Open Child" />
+        <MenuItem Command="{Binding AddPersonCommand}" Header="Add Person" />
       </MenuItem>
     </Menu>
     <Grid Margin="10" DockPanel.Dock="Bottom">
@@ -132,7 +133,7 @@
         </Grid>
       </GroupBox>
       <GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Header="Item Sources">
-
+        <DataGrid ItemsSource="{Binding Persons}" SelectedItem="{Binding PersonModel, Mode=TwoWay}" />
       </GroupBox>
     </Grid>
   </DockPanel>
