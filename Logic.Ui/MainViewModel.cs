@@ -7,6 +7,7 @@ using Logic.Ui.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace Logic.Ui
 {
@@ -53,7 +54,6 @@ namespace Logic.Ui
           }
           );
 
-        PersonModel = new PersonModel();
         var personList = new ObservableCollection<PersonModel>();
         for (var i = 0; i < 10; i++)
         {
@@ -64,22 +64,41 @@ namespace Logic.Ui
           });
         }
 
-        Persons = personList;
+        Persons = new ObservableCollection<PersonModel>(personList);
+        PersonsView = CollectionViewSource.GetDefaultView(Persons) as ListCollectionView;
+        PersonsView.CurrentChanged += (s, e) =>
+        {
+          RaisePropertyChanged(() => PersonModel);
+        };
 
         OpenChildCommand = new RelayCommand(() => MessengerInstance.Send(new OpenChildWindowMessage("Hello Child!")));
         AddPersonCommand = new RelayCommand(() => Persons.Add(new PersonModel()));
       }
     }
 
-    /// <summary>
-    /// A person to edit.
-    /// </summary>
-    public PersonModel PersonModel { get; set; } = new PersonModel();
 
     /// <summary>
     /// Indicates the progress.
     /// </summary>
     public int Progress { get; set; }
+
+    /// <summary>
+    /// A person to edit.
+    /// </summary>
+    public PersonModel PersonModel
+    {
+      get => PersonsView?.CurrentItem as PersonModel;
+      set
+      {
+        PersonsView?.MoveCurrentTo(value);
+        RaisePropertyChanged();
+      }
+    }
+
+    public ObservableCollection<PersonModel> Persons { get; set; }
+
+    public ListCollectionView PersonsView { get; }
+
 
     /// <summary>
     /// Opens a new child window.
@@ -91,6 +110,5 @@ namespace Logic.Ui
     /// </summary>
     public RelayCommand AddPersonCommand { get; private set; }
 
-    public ObservableCollection<PersonModel> Persons { get; set; }
   }
 }

@@ -133,7 +133,9 @@
         </Grid>
       </GroupBox>
       <GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Header="Item Sources">
-        <DataGrid ItemsSource="{Binding Persons}" SelectedItem="{Binding PersonModel, Mode=TwoWay}" />
+        <DataGrid ItemsSource="{Binding PersonsView}"
+                  IsSynchronizedWithCurrentItem="True"
+                  EnableRowVirtualization="True"/>
       </GroupBox>
     </Grid>
   </DockPanel>
