@@ -133,9 +133,56 @@
         </Grid>
       </GroupBox>
       <GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Header="Item Sources">
-        <DataGrid ItemsSource="{Binding PersonsView}"
-                  IsSynchronizedWithCurrentItem="True"
-                  EnableRowVirtualization="True"/>
+        <DataGrid ItemsSource="{Binding PersonsView}" 
+                          IsSynchronizedWithCurrentItem="True" 
+                          EnableRowVirtualization="True" 
+                          AutoGenerateColumns="False">
+          <DataGrid.Resources>
+            <Style x:Key="ErrorTextInput" TargetType="{x:Type TextBox}">
+              <Setter Property="Padding" Value="-2" />
+              <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                  <Setter Property="Background" Value="Red" />
+                  <Setter Property="ToolTip"
+                                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+              </Style.Triggers>
+            </Style>
+          </DataGrid.Resources>
+          <DataGrid.RowValidationErrorTemplate>
+            <ControlTemplate>
+              <Grid Margin="0,-2,0,-2"
+                                  ToolTip="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, Path=(Validation.Errors)[0].ErrorContent}">
+                <Ellipse StrokeThickness="0" Fill="Red"
+                                         Width="{TemplateBinding FontSize}"
+                                         Height="{TemplateBinding FontSize}" />
+                <TextBlock Text="!" FontSize="{TemplateBinding FontSize}"
+                                           FontWeight="Bold" Foreground="White"
+                                           HorizontalAlignment="Center" />
+              </Grid>
+            </ControlTemplate>
+          </DataGrid.RowValidationErrorTemplate>
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Firstname"
+                                            Binding="{Binding Firstname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                                            EditingElementStyle="{StaticResource ErrorTextInput}" />
+            <DataGridTextColumn Header="Lastname"
+                                            Binding="{Binding Lastname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                                            EditingElementStyle="{StaticResource ErrorTextInput}" />
+            <DataGridTextColumn Header="Birthday"
+                                            Binding="{Binding Birthday, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat=d}"
+                                            EditingElementStyle="{StaticResource ErrorTextInput}" />
+            <DataGridTextColumn Header="Age"
+                                            Binding="{Binding Age}"
+                                            IsReadOnly="True" />
+          </DataGrid.Columns>
+          <DataGrid.ContextMenu>
+            <ContextMenu>
+              <MenuItem Header="Set date" Command="{Binding SetSomeDateCommand}"
+                                      CommandParameter="{Binding PersonModel}" />
+            </ContextMenu>
+          </DataGrid.ContextMenu>
+        </DataGrid>
       </GroupBox>
     </Grid>
   </DockPanel>
