@@ -113,6 +113,8 @@ namespace Logic.Ui
             Persons.Add(newPerson);
             PersonModel = newPerson;
           });
+
+        SetSomeDateCommand = new RelayCommand<PersonModel>(person => person.Birthday = DateTime.Now.AddYears(-20));
       }
     }
 
@@ -175,12 +177,17 @@ namespace Logic.Ui
     /// <summary>
     /// Opens a new child window.
     /// </summary>
-    public RelayCommand OpenChildCommand { get; private set; }
+    public RelayCommand OpenChildCommand { get; }
 
     /// <summary>
     /// Creates a new person
     /// </summary>
-    public RelayCommand AddPersonCommand { get; private set; }
+    public RelayCommand AddPersonCommand { get;  }
+
+    /// <summary>
+    /// Setting a date
+    /// </summary>
+    public RelayCommand<PersonModel> SetSomeDateCommand { get; }
 
   }
 }
