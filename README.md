@@ -15,6 +15,8 @@ them containing a  Youtube video in English with detailed steps.
 
 [Part 5 - Binding of lists](http://www.codingfreaks.de/2017/08/14/wpf-und-mvvm-richtig-einsetzen-teil-5/)
 
+[Additional - Unit Tests gegen automatisch bereit gestellte SQL-Datenbanken](https://www.codingfreaks.de/2017/12/28/unit-tests-gegen-automatisch-bereit-gestellte-sql-datenbanken/)
+
 
 ### Development environment ###
 
