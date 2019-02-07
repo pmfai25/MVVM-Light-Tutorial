@@ -25,8 +25,8 @@ namespace Data.Core
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<CustomerCustomerGroup> CustomerCustomerGroup { get; set; }
-        public virtual DbSet<CustomerGroup> CustomerGroup { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerCustomerGroup> CustomerCustomerGroups { get; set; }
+        public virtual DbSet<CustomerGroup> CustomerGroups { get; set; }
     }
 }

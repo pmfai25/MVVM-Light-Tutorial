@@ -122,16 +122,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UnitTestSampleEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
-          <EntitySet Name="CustomerCustomerGroup" EntityType="Self.CustomerCustomerGroup" />
-          <EntitySet Name="CustomerGroup" EntityType="Self.CustomerGroup" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerCustomerGroups" EntityType="Self.CustomerCustomerGroup" />
+          <EntitySet Name="CustomerGroups" EntityType="Self.CustomerGroup" />
           <AssociationSet Name="FK_CustomerCustomerGroup_Customer" Association="Self.FK_CustomerCustomerGroup_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="CustomerCustomerGroup" EntitySet="CustomerCustomerGroup" />
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerCustomerGroup" EntitySet="CustomerCustomerGroups" />
           </AssociationSet>
           <AssociationSet Name="FK_CustomerCustomerGroup_CustomerGroup" Association="Self.FK_CustomerCustomerGroup_CustomerGroup">
-            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
-            <End Role="CustomerCustomerGroup" EntitySet="CustomerCustomerGroup" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+            <End Role="CustomerCustomerGroup" EntitySet="CustomerCustomerGroups" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -140,7 +140,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UnitTestSampleModelStoreContainer" CdmEntityContainer="UnitTestSampleEntities">
-          <EntitySetMapping Name="Customer">
+          <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="UnitTestSampleModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -149,7 +149,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CustomerCustomerGroup">
+          <EntitySetMapping Name="CustomerCustomerGroups">
             <EntityTypeMapping TypeName="UnitTestSampleModel.CustomerCustomerGroup">
               <MappingFragment StoreEntitySet="CustomerCustomerGroup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -158,7 +158,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CustomerGroup">
+          <EntitySetMapping Name="CustomerGroups">
             <EntityTypeMapping TypeName="UnitTestSampleModel.CustomerGroup">
               <MappingFragment StoreEntitySet="CustomerGroup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
