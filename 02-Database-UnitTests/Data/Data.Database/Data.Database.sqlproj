@@ -60,14 +60,28 @@
     <Folder Include="BaseData\" />
     <Folder Include="BaseData\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="SeedScripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DevDbToProject.scmp" />
+    <None Include="Test.publish.xml" />
+    <None Include="SeedScripts\BaseData.CustomerGroups.sql" />
+    <None Include="SeedScripts\BaseData.Customer.sql" />
+    <None Include="SeedScripts\BaseData.CustomerCustomerGroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="BaseData\Tables\CustomerCustomerGroup.sql" />
     <Build Include="BaseData\Tables\CustomerGroup.sql" />
     <Build Include="BaseData\Tables\Customer.sql" />
     <Build Include="Security\BaseData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="SeedData">
+      <DefaultValue>0</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>
