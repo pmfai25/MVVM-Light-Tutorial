@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Core", "Data\Data.Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Data.Core", "Tests\Tests.Data.Core\Tests.Data.Core.csproj", "{49BBD995-E8AB-4FB3-A475-A983240CF1D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".shared", ".shared", "{440DB20A-B713-4078-A5DE-4E5002E0C5D8}"
+	ProjectSection(SolutionItems) = preProject
+		.shared\deploy-database.cmd = .shared\deploy-database.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
